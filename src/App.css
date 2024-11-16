@@ -1,0 +1,13 @@
+.app-container {
+    background-color: #d4a6c8;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    padding: 50px;
+    min-height: 100vh;
+}
+
+.heading {
+    font-size: 3em;
+    margin-top: 20px;
+}
