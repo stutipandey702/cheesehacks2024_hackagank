@@ -1,25 +1,27 @@
-# hello_psg.py
-
 import PySimpleGUI as sg
 
-layout = [
-    [sg.Text("Hello! I'm your Skincare Helper!", font=('Poppins', 20), text_color='white', background_color='#D1A1AF')],
-    [sg.Text("Let's find the perfect product for you", font=('Poppins', 15), text_color='white', background_color='#D1A1AF')],
+# Path to the Poppins font file (replace with your actual path)
+font_path = "/path/to/Poppins-Regular.ttf"
 
-    [sg.Text("What is your skin type?", font=('Poppins', 12), text_color='white', background_color='#D1A1AF')],
-    [sg.Combo(['Oily', 'Dry', 'Combination', 'Sensitive'], key='-SKIN_TYPE-', font=('Poppins', 12), background_color='#D1A1AF', text_color = 'white')],
+# Layout with purply-pink mauve color and cute Poppins font
+layout = [
+    [sg.Text("Hello! I'm your Skincare Helper!", font=(font_path, 20), text_color='white', background_color='#D1A1C7')],
+    [sg.Text("Let's find the perfect product for you", font=(font_path, 15), text_color='white', background_color='#D1A1C7')],
     
-    [sg.Text("What is your main skincare concern?", font=('Poppins', 12), text_color='white', background_color='#D1A1AF')],
-    [sg.Combo(['Acne', 'Wrinkles', 'Hyperpigmentation', 'Dryness'], key='-CONCERN-', font=('Poppins', 12), background_color='#D1A1AF', text_color='white')],
+    [sg.Text("What is your skin type?", font=(font_path, 12), text_color='white', background_color='#D1A1C7')],
+    [sg.Combo(['Oily', 'Dry', 'Combination', 'Sensitive'], key='-SKIN_TYPE-', font=(font_path, 12), background_color='#D1A1C7', text_color='white')],
     
-    [sg.Text("What's your budget?", font=('Poppins', 12), text_color='white', background_color='#D1A1AF')],
-    [sg.Combo(['Under $20', '$20 - $50', '$50 - $100', 'Above $100'], key='-BUDGET-', font=('Poppins', 12), background_color='#D1A1AF', text_color='white')],
+    [sg.Text("What is your main skincare concern?", font=(font_path, 12), text_color='white', background_color='#D1A1C7')],
+    [sg.Combo(['Acne', 'Wrinkles', 'Hyperpigmentation', 'Dryness'], key='-CONCERN-', font=(font_path, 12), background_color='#D1A1C7', text_color='white')],
     
-    [sg.Button('Get Recommendations', font=('Poppins', 12), size=(20, 2), button_color=('white', '#D1A1AF'))]
+    [sg.Text("What's your budget?", font=(font_path, 12), text_color='white', background_color='#D1A1C7')],
+    [sg.Combo(['Under $20', '$20 - $50', '$50 - $100', 'Above $100'], key='-BUDGET-', font=(font_path, 12), background_color='#D1A1C7', text_color='white')],
+    
+    [sg.Button('Get Recommendations', font=(font_path, 12), size=(20, 2), button_color=('white', '#D1A1C7'))]
 ]
 
-# Create the window
-window = sg.Window('Skincare Helper', layout, size=(400,400), background_color='#D1A1AF')
+# Create the window with purply-pink mauve background and white text
+window = sg.Window('Skincare Helper', layout, size=(400, 400), background_color='#D1A1C7')
 
 # Create an event loop
 while True:
