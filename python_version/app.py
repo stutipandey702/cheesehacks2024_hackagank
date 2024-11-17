@@ -1,6 +1,9 @@
 # hello_psg.py
 
 import PySimpleGUI as sg
+# import chat
+from subprocess import call
+
 
 layout = [
     [sg.Text("Hello! I'm your Skincare Helper!", font=('Poppins', 20), text_color='white', background_color='#D1A1AF')],
@@ -15,11 +18,13 @@ layout = [
     [sg.Text("What's your budget?", font=('Poppins', 12), text_color='white', background_color='#D1A1AF')],
     [sg.Combo(['Under $20', '$20 - $50', '$50 - $100', 'Above $100'], key='-BUDGET-', font=('Poppins', 12), background_color='#D1A1AF', text_color='white')],
     
-    [sg.Button('Get Recommendations', font=('Poppins', 12), size=(20, 2), button_color=('white', '#D1A1AF'))]
+    [sg.Button('Get Recommendations', font=('Poppins', 12), size=(20, 2), button_color=('white', '#D1A1AF'))],
+    #[sg.Button('RUN CHAT!', font=('Poppins', 12), size=(20, 2), button_color=('white', '#D1A1AF'))]
 ]
 
 # Create the window
 window = sg.Window('Skincare Helper', layout, size=(400,400), background_color='#D1A1AF')
+
 
 # Create an event loop
 while True:
@@ -34,6 +39,10 @@ while True:
         budget = values['-BUDGET-']
         
         sg.popup(f"Skin Type: {skin_type}\nConcern: {concern}\nBudget: {budget}")
+
+    if event == 'RUN CHAT!':
+        output = execute_script();
+        window["-OUTPUT-"].update(output)
 
 
 window.close()
