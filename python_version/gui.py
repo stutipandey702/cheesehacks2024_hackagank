@@ -35,14 +35,14 @@ def chatbot_response(ui):
     chat_session = model.start_chat(
         history=history
     )
-    print("reached model start chat")
+    #print("reached model start chat")
     response = chat_session.send_message(user_input)
     model_response = response.text
 
     #print(f'Bot: {model_response}')
     print()
     to_return = "Bot: " + model_response
-    print(to_return)
+    #print(to_return)
 
     history.append({"role": "user", "parts": [user_input]})
     history.append({"role": "model", "parts": [model_response]})
@@ -55,7 +55,7 @@ def chatbot_response(ui):
 def main():
     # Initialize window
     window = tk.Tk()
-    window.title("AI Chatbot")
+    window.title("Skincare Chatbot")
     window.geometry("600x500")
     
     # Chat display
