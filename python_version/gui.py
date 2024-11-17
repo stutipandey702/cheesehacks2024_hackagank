@@ -5,6 +5,7 @@ import os
 from os import environ
 import google.generativeai as genai
 
+import re
 
 os.environ['GOOGLE_API_KEY'] = "AIzaSyDIElChaei2YTjVLmAlWWuJ9XtQgdfXVDE"
 genai.configure(api_key = os.environ['GOOGLE_API_KEY'])
@@ -57,7 +58,7 @@ def main():
     window = tk.Tk()
 
     window.title("AI Chatbot")
-    window.geometry("800x500")
+    window.geometry("750x350")
     window.configure(bg="#ffe6f3")
 
     title_label = tk.Label(window, text="AI Skincare Chatbot", bg="#ffe6f3", fg="#a10067")
@@ -65,7 +66,7 @@ def main():
 
     
     # Chat display
-    chat_display = scrolledtext.ScrolledText(window, wrap=tk.WORD, state='disabled', height=20, bg="#a10067", fg="white")
+    chat_display = scrolledtext.ScrolledText(window, width=100, wrap=tk.WORD, state='disabled', height=20, bg="#a10067", fg="white")
     chat_display.grid(column=0, row=0, padx=10, pady=10, columnspan=2)
     chat_display['state'] = 'normal'
     chat_display.insert(tk.END, f"Bot: Hello, I am your skincare expert, here to help you with any concerns or questions you have about skincare. I can tell you about specific products, their benefits, pricing, and other concerns! Ask away!")
@@ -75,11 +76,16 @@ def main():
     # User input
     #user_input = tk.Entry(window, width=40)
     #user_input.grid(column=0, row=1, padx=10, pady=10)
-    user_input = tk.Entry(window, width=40, bg="#ffe6f3", fg="#4b0042", relief="flat", highlightthickness=2, highlightbackground="#a10067")
-    user_input.grid(column=0, row=2, padx=10, pady=10)
+    user_input = tk.Entry(window, width=60, bg="white", fg="#4b0042", relief="flat", highlightthickness=2, highlightbackground="#a10067")
+    user_input.grid(column=0, row=2, pady=10)
 
     def send_message():
         message = user_input.get().strip()
+
+        
+
+        
+
         if message:
             # Display user message
             chat_display['state'] = 'normal'
@@ -90,9 +96,11 @@ def main():
 
             # Get chatbot response
             response = chatbot_response(message)
+            # Replace Markdown for bold (**text**) with plain text representation
+            formatted_output = re.sub(r"\*\*(.*?)\*\*", r"\1", response)
             #new_response = custom_formating(response);
             chat_display['state'] = 'normal'
-            chat_display.insert(tk.END, f"{response}\n\n")
+            chat_display.insert(tk.END, f"{formatted_output}\n\n")
             chat_display['state'] = 'disabled'
             chat_display.yview(tk.END)
             
@@ -101,7 +109,7 @@ def main():
     
     # Send button
     send_button = tk.Button(window, text="Send", command=send_message, fg="#a10067")
-    send_button.grid(column=1, row=1, padx=10, pady=10)
+    send_button.grid(column=1, row=2, pady=5)
     
     # Run the application
     window.mainloop()
