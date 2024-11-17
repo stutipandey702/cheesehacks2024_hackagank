@@ -1,9 +1,9 @@
 import tkinter as tk
 from tkinter import scrolledtext
+import tkinter.font
 import os
 from os import environ
 import google.generativeai as genai
-
 
 
 os.environ['GOOGLE_API_KEY'] = "AIzaSyDIElChaei2YTjVLmAlWWuJ9XtQgdfXVDE"
@@ -43,7 +43,9 @@ def chatbot_response(ui):
     #print(f'Bot: {model_response}')
     print()
     to_return = "Bot: " + model_response
-    print(to_return)
+    to_return = to_return.configure(font = Desired_font)
+
+    #print(to_return)
 
     history.append({"role": "user", "parts": [user_input]})
     history.append({"role": "model", "parts": [model_response]})
@@ -62,6 +64,10 @@ def main():
     # Chat display
     chat_display = scrolledtext.ScrolledText(window, wrap=tk.WORD, state='disabled', height=20)
     chat_display.grid(column=0, row=0, padx=10, pady=10, columnspan=2)
+    chat_display['state'] = 'normal'
+    chat_display.insert(tk.END, f"Bot: Hello, I am your skincare expert, here to help you with any concerns or questions you have about skincare. I can tell you about specific products, their benefits, pricing, and other concerns! Ask away!")
+    chat_display['state'] = 'disabled'
+    chat_display.yview(tk.END)
     
     # User input
     user_input = tk.Entry(window, width=40)
