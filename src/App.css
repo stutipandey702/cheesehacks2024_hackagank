@@ -1,0 +1,95 @@
+.app-container {
+    background-color: #d4a6c8;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    padding: 50px;
+    min-height: 100vh;
+}
+
+.heading {
+    font-size: 3em;
+    margin-top: 20px;
+}
+
+.intro-text {
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+
+.chat-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.chat-question {
+    margin: 15px 0;
+}
+
+label {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+select {
+  font-size: 1.1em;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 2px solid #ff66b2;
+  background-color: #ffffff;
+  color: #333;
+  width: 250px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+button.submit-btn {
+  background-color: #ff66b2;
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  font-size: 1.2em;
+  margin-top: 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button.submit-btn:hover {
+  background-color: #e14d9f;
+}
+
+.frog-bubble {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #ff66b2;
+  border-radius: 20px;
+  padding: 20px 30px;
+  color: white;
+  font-size: 1.2em;
+  max-width: 300px;
+  text-align: center;
+}
+
+.frog-bubble::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  background-image: url('/public/frog.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}
+
+.frog-bubble span {
+  display: inline-block;
+  word-wrap: break-word;
+}
+
