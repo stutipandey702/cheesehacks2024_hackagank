@@ -67,7 +67,7 @@ def main():
 
     
     # Chat display
-    chat_display = scrolledtext.ScrolledText(window, wrap=tk.WORD, state='disabled', height=20)
+    chat_display = scrolledtext.ScrolledText(window, wrap=tk.WORD, state='disabled', height=20, bg="#a10067", fg="white")
     chat_display.grid(column=0, row=0, padx=10, pady=10, columnspan=2)
     chat_display['state'] = 'normal'
     chat_display.insert(tk.END, f"Bot: Hello, I am your skincare expert, here to help you with any concerns or questions you have about skincare. I can tell you about specific products, their benefits, pricing, and other concerns! Ask away!")
@@ -102,7 +102,7 @@ def main():
             user_input.delete(0, tk.END)
     
     # Send button
-    send_button = tk.Button(window, text="Send", command=send_message)
+    send_button = tk.Button(window, text="Send", command=send_message, fg="#a10067")
     send_button.grid(column=1, row=1, padx=10, pady=10)
     
     # Run the application
